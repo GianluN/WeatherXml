@@ -1,4 +1,4 @@
-News_App
+# News_App
 Applicazione per visualizzare le news in tempo reale.
 
 L'Api disponibili sono quelle di The News API (https://www.thenewsapi.com/) che permetto di ricavare nel news da tutto il Mondo.
