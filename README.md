@@ -12,5 +12,4 @@ E' possibile selezionare la categoria/lingua desiderata per filtrare le notizie 
 E' presente inoltre il pulsante per resettare i filtri.
 
 ToDO:
-
-definire il proprio token API_TOKEN per la chiamata API nella seguente classe: example\provatecnica\utils\Constants.kt
+- definire il proprio token API_TOKEN per la chiamata API nella seguente classe: example\provatecnica\utils\Constants.kt
