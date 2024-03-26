@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/gruppo1"
+        android:checkableBehavior="single"
+        android:title="CATEGORIE">
+    </group>
+    <group
+        android:id="@+id/gruppo2"
+        android:checkableBehavior="single"
+        android:title="LINGUE">
+    </group>
+</menu>

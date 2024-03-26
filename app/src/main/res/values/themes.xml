@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ProvaTecnica" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colore_primario</item> <!-- Colore della barra di stato -->
+        <item name="colorPrimaryDark">@color/colore_primario</item> <!-- Colore della barra di azione -->
+        <item name="colorAccent">@color/colore_primario</item> <!-- Colore degli elementi di accentuazione -->
+        <!-- Aggiungere il seguente attributo per il colore dei bordi superiori -->
+        <item name="android:colorBackground">@color/colore_primario</item>
+    </style>
+
+    <style name="Theme.ProvaTecnica" parent="Base.Theme.ProvaTecnica">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

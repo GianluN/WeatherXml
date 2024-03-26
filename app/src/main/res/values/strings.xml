@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProvaTecnica</string>
+    <string name="navigation_drawer_open">Apri Navigation Drawer</string>
+    <string name="navigation_drawer_close">Chiudi Navigation Drawer</string>
+    <string name="filtra_per">FILTRA PER:</string>
+    <string name="label_filtro_categoria">CATEGORIA</string>
+    <string name="separatore_label_filtri">--------------------</string>
+    <string name="label_filtro_lingua">LINGUA</string>
+    <string name="button_reset_filtri">RESET FILTRI</string>
+</resources>
