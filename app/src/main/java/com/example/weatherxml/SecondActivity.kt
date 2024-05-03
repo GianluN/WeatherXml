@@ -1,4 +1,4 @@
-package com.example.provatecnica
+package com.example.weatherxml
 
 import android.app.Activity
 import android.content.Intent
@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.provatecnica.utils.Constants
+import com.example.weatherxml.utils.Constants
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var titleTextView: TextView

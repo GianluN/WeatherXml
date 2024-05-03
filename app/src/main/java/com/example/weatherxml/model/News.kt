@@ -1,7 +1,5 @@
-package com.example.provatecnica.model
+package com.example.weatherxml.model
 
-import com.example.provatecnica.model.DataNews
-import com.example.provatecnica.model.Meta
 import com.google.gson.annotations.SerializedName
 
 class News(

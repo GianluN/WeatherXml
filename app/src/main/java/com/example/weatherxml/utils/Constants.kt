@@ -1,4 +1,4 @@
-package com.example.provatecnica.utils
+package com.example.weatherxml.utils
 
 class Constants {
     companion object{

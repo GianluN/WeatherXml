@@ -1,4 +1,4 @@
-package com.example.provatecnica.model
+package com.example.weatherxml.model
 
 import com.google.gson.annotations.SerializedName
 

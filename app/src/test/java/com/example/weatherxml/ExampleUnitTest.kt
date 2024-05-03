@@ -1,4 +1,4 @@
-package com.example.provatecnica
+package com.example.weatherxml
 
 import org.junit.Test
 

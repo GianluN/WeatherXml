@@ -1,10 +1,9 @@
-package com.example.provatecnica
+package com.example.weatherxml
 
 import NewsAdapter
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.widget.Button
 import android.widget.ImageButton
@@ -18,8 +17,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.provatecnica.model.DataNews
-import com.example.provatecnica.utils.Constants
+import com.example.weatherxml.model.DataNews
+import com.example.weatherxml.utils.Constants
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -53,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         drawer = findViewById(R.id.drawer)
         recyclerView = findViewById(R.id.recycler_view)
 
-        actionBarDrawerToggle = ActionBarDrawerToggle(
+        /*actionBarDrawerToggle = ActionBarDrawerToggle(
             this,
             drawer,
             R.string.navigation_drawer_open,
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         )
         drawer.addDrawerListener(actionBarDrawerToggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)*/
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
@@ -103,6 +102,8 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        // questo blocco di codice configura e gestisce il ViewModel per la schermata principale
+        // il ViewModel si occupa di gestire i dati delle notizie e l'Observer associato ad esso aggiorna l'interfaccia utente ogni volta che cambiano i dati delle notizie.
         val repository = NewsRepository(newsApi)
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)

@@ -6,10 +6,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.example.provatecnica.model.DataNews
-import com.example.provatecnica.R
+import com.example.weatherxml.model.DataNews
+import com.example.weatherxml.R
 
 class NewsAdapter(private var newsList: List<DataNews>, private val onItemClick: (DataNews) -> Unit) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 

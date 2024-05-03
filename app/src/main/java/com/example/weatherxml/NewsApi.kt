@@ -1,6 +1,6 @@
-package com.example.provatecnica
+package com.example.weatherxml
 
-import com.example.provatecnica.model.News
+import com.example.weatherxml.model.News
 import retrofit2.http.GET
 import retrofit2.http.Query
 

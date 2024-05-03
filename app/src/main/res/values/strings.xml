@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProvaTecnica</string>
+    <string name="app_name">WeatherXml</string>
     <string name="navigation_drawer_open">Apri Navigation Drawer</string>
     <string name="navigation_drawer_close">Chiudi Navigation Drawer</string>
     <string name="filtra_per">FILTRA PER:</string>

@@ -1,11 +1,11 @@
-package com.example.provatecnica
+package com.example.weatherxml
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.provatecnica.model.DataNews
+import com.example.weatherxml.model.DataNews
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: NewsRepository) : ViewModel() {

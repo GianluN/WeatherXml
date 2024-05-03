@@ -1,14 +1,11 @@
-package com.example.provatecnica
+package com.example.weatherxml
 
 import android.util.Log
-import android.view.Menu
-import com.example.provatecnica.model.DataNews
-import com.example.provatecnica.model.News
-import com.example.provatecnica.utils.Constants
+import com.example.weatherxml.model.DataNews
+import com.example.weatherxml.model.News
+import com.example.weatherxml.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 
 // Gestione della chiamata API
