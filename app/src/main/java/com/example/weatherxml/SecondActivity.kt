@@ -30,7 +30,6 @@ class SecondActivity : AppCompatActivity() {
         imageViewUrl = findViewById(R.id.image_view)
         backButton = findViewById(R.id.back_button)
 
-        // dati ricevuti da MainActivity
         val data = intent.extras
         data?.let {
             titleTextView.text = it.getString(Constants.KEY_TITLE)
@@ -42,14 +41,12 @@ class SecondActivity : AppCompatActivity() {
         webviewNews.webViewClient = WebViewClient()
         webviewNews.loadUrl(urlNewsString)
 
-        // creazione dell'immagine
         Glide.with(this)
             .load(urlImageString)
-            .error(R.drawable.ic_error) // Opzionale: immagine di errore nel caso di caricamento fallito
-            .transition(DrawableTransitionOptions.withCrossFade()) // Effetto di dissolvenza durante il caricamento
+            .error(R.drawable.ic_error)
+            .transition(DrawableTransitionOptions.withCrossFade())
             .into(imageViewUrl)
 
-        // Button per tornare alla MainActivity
         backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             setResult(Activity.RESULT_OK, intent)
