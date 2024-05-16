@@ -8,7 +8,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-// Gestione della chiamata API
 class NewsRepository(private val newsApi: NewsApi) {
     suspend fun getNews(): List<DataNews> {
         return  withContext(Dispatchers.IO) {
