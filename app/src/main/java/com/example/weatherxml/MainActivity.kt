@@ -52,20 +52,9 @@ class MainActivity : AppCompatActivity() {
         drawer = findViewById(R.id.drawer)
         recyclerView = findViewById(R.id.recycler_view)
 
-        /*actionBarDrawerToggle = ActionBarDrawerToggle(
-            this,
-            drawer,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        drawer.addDrawerListener(actionBarDrawerToggle)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)*/
-
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
-        // Gestione del click sulla specifica notizia
         newsAdapter = NewsAdapter(emptyList()) { clickedItem ->
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("title", clickedItem.title)
@@ -74,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_SECOND_ACTIVITY)
         }
         recyclerView.adapter = newsAdapter
-        // Configurazione instanza Retrofit per chiamata API
+
         val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -82,7 +71,6 @@ class MainActivity : AppCompatActivity() {
 
         newsApi = retrofit.create(NewsApi::class.java)
 
-        // Gestione del click sulla voce da filtrare categoria/lingua
         navigationView.setNavigationItemSelectedListener { menuItem ->
             val groupId = menuItem.groupId
 
@@ -102,26 +90,23 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // questo blocco di codice configura e gestisce il ViewModel per la schermata principale
-        // il ViewModel si occupa di gestire i dati delle notizie e l'Observer associato ad esso aggiorna l'interfaccia utente ogni volta che cambiano i dati delle notizie.
         val repository = NewsRepository(newsApi)
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.newsData.observe(this, Observer { newsData ->
             newsData?.let {
-                newsAdapter.updateData(it) // Aggiornamento della vista con i dati ricavati dalla chiamata API
+                newsAdapter.updateData(it)
             }
         })
 
         recyclerView.adapter = newsAdapter
 
         viewModel.newsData.observe(this, Observer { news ->
-            // All'aggiornamento dei dati ricavo categorie e lingue per filtrare la ricerca
             if (news != null) {
                 allItems = news
-                categoriaFiltroList = news.map { it.categories } // dalla lista di news ricavo le varie categorie presenti
-                var listaCategorieSenzaNull = categoriaFiltroList.filter { it.isNotEmpty() }.flatten() // elimino valori nulli e creo voci singole in caso in una news ci siano più categorie
-                listaCategorieSenzaNull = listaCategorieSenzaNull.distinct() // elimino i valori doppi
+                categoriaFiltroList = news.map { it.categories }
+                var listaCategorieSenzaNull = categoriaFiltroList.filter { it.isNotEmpty() }.flatten()
+                listaCategorieSenzaNull = listaCategorieSenzaNull.distinct()
 
                 linguaFiltroList = news.map { it.language }
                 linguaFiltroList = linguaFiltroList.distinct()
@@ -138,12 +123,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.getNews()
         }
 
-        // Filter button -> permette di accedere manu per la scelta dei filtri
         filterButton.setOnClickListener {
             drawer.openDrawer(GravityCompat.START)
         }
-
-        // Button reffresh -> genera una nuova chiamata API e aggiorna la schermata
+        
         refreshButton.setOnClickListener {
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -152,7 +135,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        // Button reset filtri -> mostra la lista di news iniziale
         resetFilterButton.setOnClickListener {
             viewModel.newsData.value?.let { newsList ->
                 newsAdapter.updateData(newsList)
@@ -162,7 +144,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    // Funzione per gestire il cambio pagina e ricaricare la lista di news ricavata dalla chiamata API iniziale
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_SECOND_ACTIVITY && resultCode == Activity.RESULT_OK) {
@@ -172,7 +153,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Aggiunta delle categorie nel Menu dei filtri
     private fun componiFiltriCategorie(menu: Menu, listaFiltri: List<String>) {
         val subMenuCategorie = menu.addSubMenu("CATEGORIE:")
         for (i in 0 until listaFiltri.size) {
@@ -180,7 +160,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Aggiunta delle lingue nel Menu dei filtri
     private fun componiFiltriLingue(menu: Menu, listaFiltri: List<String>) {
         val subMenuLingue = menu.addSubMenu("LINGUE:")
         for (i in 0 until listaFiltri.size) {
@@ -188,13 +167,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Ricava le news secondo la categoria selezionata
     private fun filtraRisultatiCategorie(tipologiaFiltro: String) {
         val filteredItems = allItems.filter { tipologiaFiltro in it.categories}
         newsAdapter.updateData(filteredItems)
     }
 
-    // Ricava le news secondo la lingua selezionata
     private fun filtraRisultatiLingua(tipologiaFiltro: String) {
         val filteredItems = allItems.filter { tipologiaFiltro in it.language}
         newsAdapter.updateData(filteredItems)
