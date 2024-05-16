@@ -26,7 +26,6 @@ class NewsAdapter(private var newsList: List<DataNews>, private val onItemClick:
                 .error(R.drawable.ic_error)
                 .into(newsImage)
 
-            // Listener di clic all'elemento
             itemView.setOnClickListener {
                 onItemClick(newsItem)
             }
